@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import './PDFUploader.css';
 import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
@@ -8,12 +8,15 @@ import 'filepond/dist/filepond.min.css';
 
 registerPlugin(FilePondPluginFileValidateType);
 
-function PDFUploader() {
-    const [files, setFiles] = useState<(FilePondInitialFile | ActualFileObject | Blob | string)[]>([]);
+interface IFilesProps {
+    files: (FilePondInitialFile | ActualFileObject | Blob | string)[];
+    onFilesChange: Dispatch<SetStateAction<(string | FilePondInitialFile | Blob | ActualFileObject)[]>>;
+}
 
+const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange }) => {
     const setFilesHelper = (filesList: FilePondFile[]) => {
         console.log('---------');
-        setFiles(
+        onFilesChange(
             filesList.map((file) => {
                 console.log(file.file.name);
                 return file.file;
@@ -34,6 +37,6 @@ function PDFUploader() {
             />
         </div>
     );
-}
+};
 
 export default PDFUploader;
