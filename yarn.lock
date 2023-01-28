@@ -6111,6 +6111,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filepond-plugin-file-validate-type@npm:^1.2.8":
+  version: 1.2.8
+  resolution: "filepond-plugin-file-validate-type@npm:1.2.8"
+  peerDependencies:
+    filepond: ">=1.x <5.x"
+  checksum: 5a8334323d0f9ef154f4f5788125e8b724ab3e39f23ccb35defad8d4a0f324f3097c280858f9662278576a9e9929065739c455f3bfe7bab1827bd1d9fe32d204
+  languageName: node
+  linkType: hard
+
+"filepond@npm:^4.30.4":
+  version: 4.30.4
+  resolution: "filepond@npm:4.30.4"
+  checksum: ec1c06a11ceda231e5589f52307fa2f34b9c67c14b22c2be7adde227159f32e9ed1aa0e0a32fbca4e08a837b6714084e9f629c097a669fc1c3076be8c5f3c295
+  languageName: node
+  linkType: hard
+
 "filesize@npm:^8.0.6":
   version: 8.0.7
   resolution: "filesize@npm:8.0.7"
@@ -9377,9 +9393,12 @@ __metadata:
     eslint-config-prettier: ^8.6.0
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-react: ^7.32.1
+    filepond: ^4.30.4
+    filepond-plugin-file-validate-type: ^1.2.8
     prettier: ^2.8.3
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-filepond: ^7.1.2
     react-scripts: 5.0.1
     typescript: ^4.9.4
     web-vitals: ^2.1.4
@@ -10584,6 +10603,17 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
+  languageName: node
+  linkType: hard
+
+"react-filepond@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "react-filepond@npm:7.1.2"
+  peerDependencies:
+    filepond: ">=3.7.x < 5.x"
+    react: 16 - 18
+    react-dom: 16 - 18
+  checksum: 5aaa41dff2c3b3330442c521c3d73505b73bc14a3989c3e62f5e48de52d07904e1146280ec926fd805d7571b9ec14eec71769e55205f80ed0154094c48242b8f
   languageName: node
   linkType: hard
 
