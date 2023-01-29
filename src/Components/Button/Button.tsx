@@ -1,9 +1,9 @@
 import React, { MouseEventHandler } from 'react';
-import './CombineFilesButton.css';
+import './Button.css';
 
 interface IButtonProps {
     buttonText: string;
-    onButtonClick: MouseEventHandler<HTMLButtonElement>;
+    onButtonClick: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
 const Button: React.FC<IButtonProps> = ({ buttonText, onButtonClick }) => {
