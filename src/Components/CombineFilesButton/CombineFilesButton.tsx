@@ -20,11 +20,14 @@ const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange }) =
             onMergedPDFUrlChange(url);
         }
     };
-    return (
-        <div className="PDFCombiner">
-            <Button buttonText="Combine files" onButtonClick={onButtonClick} />
-        </div>
-    );
+    if (files.length >= 2) {
+        return (
+            <div className="PDFCombiner">
+                <Button buttonText="Combine files" onButtonClick={onButtonClick} />
+            </div>
+        );
+    }
+    return null;
 };
 
 export default CombineFilesButton;
