@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import './CombineFilesButton.css';
 import PDFMerger from 'pdf-merger-js/browser';
+import Button from '../Button/Button';
 
 interface IProps {
     files: Blob[];
@@ -21,9 +22,7 @@ const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange }) =
     };
     return (
         <div className="PDFCombiner">
-            <button type="button" className="button" onClick={onButtonClick}>
-                Combine files
-            </button>
+            <Button buttonText="Combine files" onButtonClick={onButtonClick} />
         </div>
     );
 };
