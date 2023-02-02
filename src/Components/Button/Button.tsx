@@ -4,15 +4,14 @@ import './Button.css';
 interface IButtonProps {
     buttonText: string;
     onButtonClick: MouseEventHandler<HTMLButtonElement> | undefined;
+    disabled: boolean;
 }
 
-const Button: React.FC<IButtonProps> = ({ buttonText, onButtonClick }) => {
+const Button: React.FC<IButtonProps> = ({ buttonText, onButtonClick, disabled }) => {
     return (
-        <div className="Button">
-            <button type="button" className="button" onClick={onButtonClick}>
-                {buttonText}
-            </button>
-        </div>
+        <button type="button" className="Button" onClick={onButtonClick} disabled={disabled}>
+            {buttonText}
+        </button>
     );
 };
 
