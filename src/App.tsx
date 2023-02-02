@@ -8,12 +8,13 @@ import PDFDownloadButton from './Components/PDFDownloadButton/PDFDownloadButton'
 function App() {
     const [files, setFiles] = useState<Blob[]>([]);
     const [mergedPDFUrl, setMergedPdfUrl] = useState<string>('');
+    const [merging, setMerging] = useState<boolean>(false);
     return (
         <div className="App">
             <Header />
             <PDFUploader files={files} onFilesChange={setFiles} />
-            <CombineFilesButton files={files} onMergedPDFUrlChange={setMergedPdfUrl} />
-            <PDFDownloadButton mergedPDFUrl={mergedPDFUrl} />
+            <CombineFilesButton files={files} onMergedPDFUrlChange={setMergedPdfUrl} onMergingChange={setMerging} />
+            <PDFDownloadButton mergedPDFUrl={mergedPDFUrl} merging={merging} />
         </div>
     );
 }

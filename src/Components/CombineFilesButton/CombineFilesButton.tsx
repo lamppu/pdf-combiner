@@ -6,11 +6,13 @@ import Button from '../Button/Button';
 interface IProps {
     files: Blob[];
     onMergedPDFUrlChange: Dispatch<SetStateAction<string>>;
+    onMergingChange: Dispatch<SetStateAction<boolean>>;
 }
 
-const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange }) => {
+const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange, onMergingChange }) => {
     const onButtonClick = async () => {
         if (files) {
+            onMergingChange(true);
             const merger = new PDFMerger();
             for (const file of files) {
                 await merger.add(file);
@@ -18,6 +20,7 @@ const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange }) =
             const mergedPdf = await merger.saveAsBlob();
             const url = URL.createObjectURL(mergedPdf);
             onMergedPDFUrlChange(url);
+            onMergingChange(false);
         }
     };
     let buttonDisabled = false;
