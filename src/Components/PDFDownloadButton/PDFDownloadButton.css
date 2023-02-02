@@ -1,0 +1,6 @@
+.PDFDownloadButton {
+    padding-bottom: 1em;
+}
+#downloadAnchor {
+    display: inline-block;
+}
