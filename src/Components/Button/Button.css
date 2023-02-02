@@ -11,3 +11,8 @@
     background-color:#297A6E;
     color: white;
 }
+.Button:disabled {
+    background-color: grey;
+    color:lightgray;
+    cursor: default;
+}
