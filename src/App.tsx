@@ -9,11 +9,17 @@ function App() {
     const [files, setFiles] = useState<Blob[]>([]);
     const [mergedPDFUrl, setMergedPdfUrl] = useState<string>('');
     const [merging, setMerging] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
     return (
         <div className="App">
             <Header />
-            <PDFUploader files={files} onFilesChange={setFiles} />
-            <CombineFilesButton files={files} onMergedPDFUrlChange={setMergedPdfUrl} onMergingChange={setMerging} />
+            <PDFUploader files={files} onFilesChange={setFiles} onErrorChange={setError} />
+            <CombineFilesButton
+                files={files}
+                onMergedPDFUrlChange={setMergedPdfUrl}
+                onMergingChange={setMerging}
+                error={error}
+            />
             <PDFDownloadButton mergedPDFUrl={mergedPDFUrl} merging={merging} />
         </div>
     );

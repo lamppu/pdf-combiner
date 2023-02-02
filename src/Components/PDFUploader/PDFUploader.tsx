@@ -11,15 +11,21 @@ registerPlugin(FilePondPluginFileValidateType);
 interface IFilesProps {
     files: Blob[];
     onFilesChange: Dispatch<SetStateAction<Blob[]>>;
+    onErrorChange: Dispatch<SetStateAction<boolean>>;
 }
 
-const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange }) => {
+const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange, onErrorChange }) => {
     const setFilesHelper = (filesList: FilePondFile[]) => {
-        onFilesChange(
-            filesList.map((file) => {
-                return file.file;
-            }),
-        );
+        onErrorChange(false);
+        const mapped = filesList.map((file) => {
+            return file.file;
+        });
+        for (const file of mapped) {
+            if (file.type !== 'application/pdf') {
+                onErrorChange(true);
+            }
+        }
+        onFilesChange(mapped);
     };
 
     return (

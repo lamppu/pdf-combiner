@@ -7,9 +7,10 @@ interface IProps {
     files: Blob[];
     onMergedPDFUrlChange: Dispatch<SetStateAction<string>>;
     onMergingChange: Dispatch<SetStateAction<boolean>>;
+    error: boolean;
 }
 
-const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange, onMergingChange }) => {
+const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange, onMergingChange, error }) => {
     const onButtonClick = async () => {
         if (files) {
             onMergingChange(true);
@@ -24,7 +25,8 @@ const CombineFilesButton: React.FC<IProps> = ({ files, onMergedPDFUrlChange, onM
         }
     };
     let buttonDisabled = false;
-    if (files.length < 2) {
+
+    if (files.length < 2 || error) {
         buttonDisabled = true;
     }
     return (
