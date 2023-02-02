@@ -9,9 +9,9 @@ interface IDownloadProps {
 const PDFDownloadButton: React.FC<IDownloadProps> = ({ mergedPDFUrl }) => {
     if (mergedPDFUrl !== '') {
         return (
-            <div className="PDFCombiner">
-                <a href={mergedPDFUrl} download="combined">
-                    <Button buttonText="Download" onButtonClick={void 0} />
+            <div className="PDFDownloadButton">
+                <a href={mergedPDFUrl} download="combined" id="downloadAnchor">
+                    <Button buttonText="Download" onButtonClick={void 0} disabled={false} />
                 </a>
             </div>
         );
