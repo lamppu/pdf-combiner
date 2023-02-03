@@ -2,26 +2,28 @@ import React, { Dispatch, SetStateAction } from 'react';
 import './PDFUploader.css';
 import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import { ActualFileObject, FilePondInitialFile, FilePondFile } from 'filepond';
+import { FilePondFile } from 'filepond';
 // Import FilePond styles
 import 'filepond/dist/filepond.min.css';
 
 registerPlugin(FilePondPluginFileValidateType);
 
 interface IFilesProps {
-    files: (FilePondInitialFile | ActualFileObject | Blob | string)[];
-    onFilesChange: Dispatch<SetStateAction<(string | FilePondInitialFile | Blob | ActualFileObject)[]>>;
+    files: Blob[];
+    onFilesChange: Dispatch<SetStateAction<Blob[]>>;
+    onErrorChange: Dispatch<SetStateAction<boolean>>;
 }
 
-const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange }) => {
+const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange, onErrorChange }) => {
     const setFilesHelper = (filesList: FilePondFile[]) => {
-        console.log('---------');
-        onFilesChange(
-            filesList.map((file) => {
-                console.log(file.file.name);
-                return file.file;
-            }),
-        );
+        onErrorChange(false);
+        const mapped = filesList.map((file) => {
+            if (file.file.type !== 'application/pdf') {
+                onErrorChange(true);
+            }
+            return file.file;
+        });
+        onFilesChange(mapped);
     };
 
     return (
@@ -33,7 +35,8 @@ const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange }) => {
                 allowReorder={true}
                 onreorderfiles={setFilesHelper}
                 acceptedFileTypes={['application/pdf']}
-                labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                labelIdle='Drag & Drop your PDF files or <span class="filepond--label-action">Browse</span>'
+                itemInsertLocation={'after'}
             />
         </div>
     );
