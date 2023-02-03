@@ -8,6 +8,9 @@ A simple app to merge PDF files together
 
 A fun little project to strengthen my React skills. I also threw TypeScript in the mix to learn something new
 
+## Demo
+
+You can see the demo of the app [here](https://pdf-combiner.vercel.app/)
 ## Run the app
 
 This app was built using Node v19.4.0 and Yarn v3.3.1
