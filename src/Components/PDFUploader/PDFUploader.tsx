@@ -18,13 +18,11 @@ const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange, onErrorChang
     const setFilesHelper = (filesList: FilePondFile[]) => {
         onErrorChange(false);
         const mapped = filesList.map((file) => {
-            return file.file;
-        });
-        for (const file of mapped) {
-            if (file.type !== 'application/pdf') {
+            if (file.file.type !== 'application/pdf') {
                 onErrorChange(true);
             }
-        }
+            return file.file;
+        });
         onFilesChange(mapped);
     };
 
@@ -37,7 +35,8 @@ const PDFUploader: React.FC<IFilesProps> = ({ files, onFilesChange, onErrorChang
                 allowReorder={true}
                 onreorderfiles={setFilesHelper}
                 acceptedFileTypes={['application/pdf']}
-                labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                labelIdle='Drag & Drop your PDF files or <span class="filepond--label-action">Browse</span>'
+                itemInsertLocation={'after'}
             />
         </div>
     );
